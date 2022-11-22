@@ -1,0 +1,233 @@
+<!-- Karsten Cole, ODD 7 - 8, 11/22, Calorie counter -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function initialize(){
+            // Appetizer initializing
+            AppetizerP = document.getElementById("A-p");
+            Ap = 0;
+            AppetizerC = document.getElementById("A-c");
+            Ac = 0;
+            AppetizerF = document.getElementById("A-f");
+            Af = 0;
+            AppetizerT = document.getElementById("A-t");
+            At = 0;
+            // Entree initializing
+            EntreeP = document.getElementById("E-p");
+            Ep = 0;
+            EntreeC = document.getElementById("E-c");
+            Ec = 0;
+            EntreeF = document.getElementById("E-f");
+            Ef = 0;
+            EntreeT = document.getElementById("E-t");
+            Et = 0;
+            // Dessert initializing
+            DessertP = document.getElementById("D-p");
+            Dp = 0;
+            DessertC = document.getElementById("D-c");
+            Dc = 0;
+            DessertF = document.getElementById("D-f");
+            Df = 0;
+            DessertT = document.getElementById("D-t");
+            Dt = 0;
+            // Total initializing
+            Total = document.getElementById("T");
+        }
+        function addg(Meal, type){
+            if(Meal == "A"){
+                if(type == "p"){
+                    Ap += 1;
+                    AppetizerP.innerHTML = Ap;
+                }
+                if(type == "c"){
+                    Ac += 1;
+                    AppetizerC.innerHTML = Ac;
+                }
+                if(type == "f"){
+                    Af += 1;
+                    AppetizerF.innerHTML = Af;
+                }
+            }
+            if(Meal == "E"){
+                if(type == "p"){
+                    Ep += 1;
+                    EntreeP.innerHTML = Ep;
+                }
+                if(type == "c"){
+                    Ec += 1;
+                    EntreeC.innerHTML = Ec;
+                }
+                if(type == "f"){
+                    Ef += 1;
+                    EntreeF.innerHTML = Ef;
+                }
+            }
+            if(Meal == "D"){
+                if(type == "p"){
+                    Dp += 1;
+                    DessertP.innerHTML = Dp;
+                }
+                if(type == "c"){
+                    Dc += 1;
+                    DessertC.innerHTML = Dc;
+                }
+                if(type == "f"){
+                    Df += 1;
+                    DessertF.innerHTML = Df;
+                }
+            }
+            
+            total(Meal);
+        }
+        function subg(Meal, type){
+            if(Meal == "A"){
+                if(type == "p" && Ap > 0){
+                    Ap -= 1;
+                    AppetizerP.innerHTML = Ap;
+                }
+                if(type == "c" && Ac > 0){
+                    Ac -= 1;
+                    AppetizerC.innerHTML = Ac;
+                }
+                if(type == "f" && Af > 0){
+                    Af -= 1;
+                    AppetizerF.innerHTML = Af;
+                }
+            }
+            if(Meal == "E"){
+                if(type == "p" && Ep > 0){
+                    Ep -= 1;
+                    EntreeP.innerHTML = Ep;
+                }
+                if(type == "c" && Ec > 0){
+                    Ec -= 1;
+                    EntreeC.innerHTML = Ec;
+                }
+                if(type == "f" && Ef > 0){
+                    Ef -= 1;
+                    EntreeF.innerHTML = Ef;
+                }
+            }
+            if(Meal == "D"){
+                if(type == "p" && Dp > 0){
+                    Dp -= 1;
+                    DessertP.innerHTML = Dp;
+                }
+                if(type == "c" && Dc > 0){
+                    Dc -= 1;
+                    DessertC.innerHTML = Dc;
+                }
+                if(type == "f" && Df > 0){
+                    Df -= 1;
+                    DessertF.innerHTML = Df;
+                }
+            }
+            total(Meal);
+        }
+        function total(Meal){
+            if(Meal == 'A'){
+                At = Af*9 + Ac*4 + Ap*4;
+                AppetizerT.innerHTML = At;
+            }
+            if(Meal == 'E'){
+                Et = Ef*9 + Ec*4 + Ep*4;
+                EntreeT.innerHTML = Et;
+            }
+            if(Meal == 'D'){
+                Dt = Df*9 + Dc*4 + Dp*4;
+                DessertT.innerHTML = Dt;
+            }
+            Total.innerHTML = Et+Dt+At;
+        }
+    </script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body onload = "initialize()">
+    <h1>Calorie Counter:</h1>
+    <hr/>
+    <div id="wrapper">
+        <div id="appetizer">
+            <h2>Appetizer:</h2>
+            <div class="protein">
+                <h3>Protein</h3>
+                <button onclick="addg('A','p')">+</button>
+                <span id="A-p">0</span>g
+                <button onclick="subg('A','p')">-</button>
+            </div>
+            <div class="carbohydrates">
+                <h3>carbohydrates</h3>
+                <button onclick="addg('A','c')">+</button>
+                <span id="A-c">0</span>g
+                <button onclick="subg('A','c')">-</button>
+            </div>
+            <div class="fats">
+                <h3>fats</h3>
+                <button onclick="addg('A','f')">+</button>
+                <span id="A-f">0</span>g
+                <button onclick="subg('A','f')">-</button>
+            </div>
+            <div class="sectional-calories">
+                <h3> Appetizer Calories: <span id="A-t">0</span></h3>
+            </div>
+        </div>
+        <div id="entree">
+            <h2>Entree:</h2>
+            <div class="protein">
+                <h3>Protein</h3>
+                <button onclick="addg('E','p')">+</button>
+                <span id="E-p">0</span>g
+                <button onclick="subg('E','p')">-</button>
+            </div>
+            <div class="carbohydrates">
+                <h3>carbohydrates</h3>
+                <button onclick="addg('E','c')">+</button>
+                <span id="E-c">0</span>g
+                <button onclick="subg('E','c')">-</button>
+            </div>
+            <div class="fats">
+                <h3>fats</h3>
+                <button onclick="addg('E','f')">+</button>
+                <span id="E-f">0</span>g
+                <button onclick="subg('E','f')">-</button>
+            </div>
+            <div class="sectional-calories">
+                <h3> Entree Calories: <span id="E-t">0</span></h3>
+            </div>
+        </div>
+        <div id="dessert">
+            <h2>Dessert:</h2>
+            <div class="protein">
+                <h3>Protein</h3>
+                <button onclick="addg('D','p')">+</button>
+                <span id="D-p">0</span>g
+                <button onclick="subg('D','p')">-</button>
+            </div>
+            <div class="carbohydrates">
+                <h3>carbohydrates</h3>
+                <button onclick="addg('D','c')">+</button>
+                <span id="D-c">0</span>g
+                <button onclick="subg('D','c')">-</button>
+            </div>
+            <div class="fats">
+                <h3>fats</h3>
+                <button onclick="addg('D','f')">+</button>
+                <span id="D-f">0</span>g
+                <button onclick="subg('D','f')">-</button>
+            </div>
+            <div class="sectional-calories">
+                <h3> Dessert Calories: <span id="D-t">0</span></h3>
+            </div>
+        </div>
+    </div>
+    <hr/>
+    <div id="Total">
+        <h1>Total: <span id="T">0</span></h1>
+    </div>
+
+</body>
+</html>

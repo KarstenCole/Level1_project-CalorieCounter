@@ -1,0 +1,11 @@
+#wrapper{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+button{
+    padding: 5px 15px 5px 15px;
+}
+#Total,h1{
+    text-align: center;
+}
